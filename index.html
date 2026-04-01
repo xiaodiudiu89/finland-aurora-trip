@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 芬兰极光之旅</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700;900&display=swap');
+
+  :root {
+    --aurora-green: #00e68a;
+    --aurora-teal: #00d4aa;
+    --aurora-blue: #0077ff;
+    --aurora-purple: #7b2ff7;
+    --aurora-pink: #ff6ec7;
+    --aurora-cyan: #22d3ee;
+    --dark-bg: #060a14;
+    --dark-bg2: #0a0e1a;
+    --card-bg: rgba(15,23,42,0.85);
+    --card-border: rgba(255,255,255,0.06);
+    --glass: rgba(255,255,255,0.03);
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-warm: #f59e0b;
+    --accent-red: #ef4444;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-primary);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== GLOBAL AURORA BG ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 40% at 20% 10%, rgba(0,230,138,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(123,47,247,0.03) 0%, transparent 50%);
+  }
+
+  section, footer { position: relative; z-index: 1; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero-bg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1920&q=80&auto=format') center/cover no-repeat;
+    filter: brightness(0.45) saturate(1.2);
+  }
+
+  .hero-aurora-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      linear-gradient(180deg, rgba(0,230,138,0.08) 0%, transparent 40%),
+      linear-gradient(200deg, rgba(123,47,247,0.1) 0%, transparent 50%),
+      linear-gradient(180deg, transparent 60%, rgba(6,10,20,1) 100%);
+    animation: aurora-pulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.7; }
+  }
+
+  .hero-particles {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1.5px 1.5px at 20% 40%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1px 1px at 35% 10%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 50% 50%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(2px 2px at 65% 20%, rgba(255,255,255,0.9), transparent),
+      radial-gradient(1px 1px at 80% 35%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.7), transparent),
+      radial-gradient(1.5px 1.5px at 5% 60%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 45% 70%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 75% 65%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 30% 80%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 60% 5%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(1px 1px at 15% 30%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 95% 50%, rgba(255,255,255,0.4), transparent);
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.6; }
+    100% { opacity: 1; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: rgba(0,230,138,0.12);
+    border: 1px solid rgba(0,230,138,0.3);
+    color: var(--aurora-green);
+    padding: 8px 28px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif SC', 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    background: linear-gradient(135deg, #fff 20%, var(--aurora-green) 50%, var(--aurora-cyan) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    letter-spacing: 4px;
+    text-shadow: 0 0 80px rgba(0,230,138,0.3);
+  }
+
+  .hero-en {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    letter-spacing: 2px;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 30px rgba(0,230,138,0.4);
+  }
+
+  .hero-stat-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: 4px;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-indicator span {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    animation: scroll-anim 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-anim {
+    0%, 100% { transform: scaleY(1); opacity: 1; }
+    50% { transform: scaleY(0.5); opacity: 0.3; }
+  }
+
+  /* ===== ROUTE SECTION ===== */
+  .route-section {
+    padding: 8rem 2rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-block;
+    color: var(--aurora-green);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    letter-spacing: 2px;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 4rem;
+    max-width: 600px;
+  }
+
+  .route-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    padding: 3rem 1rem;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .route-visual::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(0,230,138,0.02) 0%, rgba(123,47,247,0.02) 100%);
+    pointer-events: none;
+  }
+
+  .route-node {
+    text-align: center;
+    padding: 1.2rem 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .route-node-emoji {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .route-node-city {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .route-node-days {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .route-node-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    color: var(--aurora-green);
+    background: rgba(0,230,138,0.1);
+    padding: 2px 10px;
+    border-radius: 100px;
+    margin-top: 6px;
+  }
+
+  .route-connector {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .route-connector .dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(0,230,138,0.4);
+  }
+
+  .route-connector .line {
+    width: 30px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,230,138,0.4), rgba(0,119,255,0.4));
+  }
+
+  .route-connector .arrow {
+    color: var(--aurora-green);
+    font-size: 0.9rem;
+    opacity: 0.6;
+  }
+
+  /* ===== IMAGE BANNER ===== */
+  .img-banner {
+    width: 100%;
+    height: 50vh;
+    min-height: 350px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .img-banner-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(6,10,20,0.3) 0%, rgba(6,10,20,0.1) 40%, rgba(6,10,20,0.8) 80%, rgba(6,10,20,1) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 3rem;
+  }
+
+  .img-banner-label {
+    font-size: 0.7rem;
+    color: var(--aurora-green);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .img-banner-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-top: 8px;
+  }
+
+  /* ===== DAY CARDS ===== */
+  .days-section {
+    padding: 2rem 2rem 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .day-card {
+    position: relative;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 0;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .day-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,230,138,0.05);
+  }
+
+  .day-card.has-image .day-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .day-card .day-image-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(180deg, transparent 30%, var(--card-bg) 100%);
+    pointer-events: none;
+  }
+
+  .day-card-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  .day-card.has-image .day-card-body {
+    padding-top: 0;
+    position: relative;
+    margin-top: -2rem;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .day-num {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    position: relative;
+  }
+
+  .day-num.c-green { background: linear-gradient(135deg, rgba(0,230,138,0.2), rgba(0,230,138,0.05)); color: var(--aurora-green); border: 1px solid rgba(0,230,138,0.2); }
+  .day-num.c-blue { background: linear-gradient(135deg, rgba(0,119,255,0.2), rgba(0,119,255,0.05)); color: #60a5fa; border: 1px solid rgba(0,119,255,0.2); }
+  .day-num.c-purple { background: linear-gradient(135deg, rgba(123,47,247,0.2), rgba(123,47,247,0.05)); color: #c4b5fd; border: 1px solid rgba(123,47,247,0.2); }
+  .day-num.c-amber { background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(245,158,11,0.05)); color: #fbbf24; border: 1px solid rgba(245,158,11,0.2); }
+  .day-num.c-teal { background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05)); color: #22d3ee; border: 1px solid rgba(34,211,238,0.2); }
+  .day-num.c-pink { background: linear-gradient(135deg, rgba(255,110,199,0.2), rgba(255,110,199,0.05)); color: #f9a8d4; border: 1px solid rgba(255,110,199,0.2); }
+  .day-num.c-orange { background: linear-gradient(135deg, rgba(251,146,60,0.2), rgba(251,146,60,0.05)); color: #fdba74; border: 1px solid rgba(251,146,60,0.2); }
+  .day-num.c-gray { background: linear-gradient(135deg, rgba(148,163,184,0.15), rgba(148,163,184,0.05)); color: #cbd5e1; border: 1px solid rgba(148,163,184,0.15); }
+
+  .day-title-block h2 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .day-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .day-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  .day-loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.05);
+    padding: 3px 12px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+  }
+
+  /* Schedule */
+  .sched {
+    margin-bottom: 1.2rem;
+  }
+
+  .sched-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--aurora-green);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.8rem;
+    margin-top: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sched-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(0,230,138,0.2), transparent);
+  }
+
+  .sched-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    position: relative;
+  }
+
+  .sched-row + .sched-row {
+    border-top: 1px solid rgba(255,255,255,0.03);
+  }
+
+  .sched-time {
+    flex-shrink: 0;
+    width: 70px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--aurora-green);
+    font-variant-numeric: tabular-nums;
+    padding-top: 1px;
+  }
+
+  .sched-dot-col {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8px;
+  }
+
+  .sched-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--aurora-green);
+    box-shadow: 0 0 8px rgba(0,230,138,0.4);
+  }
+
+  .sched-dot.dim {
+    background: var(--text-muted);
+    box-shadow: none;
+    width: 6px;
+    height: 6px;
+  }
+
+  .sched-text {
+    flex: 1;
+  }
+
+  .sched-main {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  .sched-sub {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.5;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+  }
+
+  .tag-core { background: rgba(239,68,68,0.15); color: #f87171; }
+  .tag-opt { background: rgba(245,158,11,0.12); color: #fbbf24; }
+  .tag-rec { background: rgba(0,230,138,0.12); color: var(--aurora-green); }
+
+  /* Costs */
+  .costs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .cost-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(245,158,11,0.06);
+    border: 1px solid rgba(245,158,11,0.12);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+  }
+
+  .cost-chip .c-label { color: var(--text-muted); }
+  .cost-chip .c-val { color: var(--accent-warm); font-weight: 600; }
+
+  .transport-note {
+    margin-top: 8px;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  /* ===== BUDGET ===== */
+  .budget-section {
+    padding: 4rem 2rem 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .budget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .b-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .b-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 3px;
+  }
+
+  .b-card.b-stay::before { background: linear-gradient(90deg, var(--aurora-green), var(--aurora-teal)); }
+  .b-card.b-act::before { background: linear-gradient(90deg, var(--aurora-purple), var(--aurora-pink)); }
+  .b-card.b-trans::before { background: linear-gradient(90deg, var(--aurora-blue), var(--aurora-cyan)); }
+  .b-card.b-food::before { background: linear-gradient(90deg, var(--accent-warm), #f97316); }
+
+  .b-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .b-card h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+  }
+
+  .b-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    font-size: 0.85rem;
+  }
+
+  .b-line:last-of-type { border-bottom: none; }
+  .b-line .b-l { color: var(--text-secondary); }
+  .b-line .b-v { color: var(--text-primary); font-weight: 600; }
+  .b-line .b-v.opt { color: var(--text-muted); font-style: italic; font-weight: 400; }
+
+  .b-sub {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .b-sub .b-v { color: var(--aurora-green); font-size: 1.05rem; }
+
+  .total-card {
+    position: relative;
+    border-radius: 24px;
+    padding: 3rem;
+    text-align: center;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid rgba(0,230,138,0.15);
+  }
+
+  .total-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse 50% 60% at 30% 0%, rgba(0,230,138,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 70% 100%, rgba(0,119,255,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .total-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 0.5rem;
+    position: relative;
+  }
+
+  .total-value {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--aurora-green) 0%, var(--aurora-cyan) 50%, var(--aurora-blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+  }
+
+  .total-note {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  /* ===== BOOKING ===== */
+  .booking-section {
+    padding: 4rem 2rem 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .book-phase {
+    margin-bottom: 3rem;
+  }
+
+  .book-phase-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.2rem;
+  }
+
+  .book-phase-icon {
+    font-size: 1.5rem;
+  }
+
+  .book-phase-title {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .book-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(20px);
+  }
+
+  .book-table th {
+    text-align: left;
+    padding: 12px 18px;
+    background: rgba(255,255,255,0.02);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .book-table td {
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+  }
+
+  .book-table tr:last-child td { border-bottom: none; }
+
+  .book-table .prov { color: var(--text-primary); font-weight: 600; }
+
+  .book-table a {
+    color: var(--aurora-cyan);
+    text-decoration: none;
+    font-size: 0.82rem;
+    border-bottom: 1px solid rgba(34,211,238,0.2);
+    transition: border-color 0.2s;
+  }
+
+  .book-table a:hover { border-color: var(--aurora-cyan); }
+
+  .book-table .note { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ===== EVALUATION ===== */
+  .eval-section {
+    padding: 4rem 2rem 6rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .eval-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .eval-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+  }
+
+  .eval-card h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    letter-spacing: 1px;
+  }
+
+  .eval-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .eval-card ul li {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding: 6px 0 6px 1.4rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .eval-card ul li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .eval-card.eval-good ul li::before { background: var(--aurora-green); box-shadow: 0 0 6px rgba(0,230,138,0.4); }
+  .eval-card.eval-tip ul li::before { background: var(--accent-warm); box-shadow: 0 0 6px rgba(245,158,11,0.3); }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    border-top: 1px solid var(--card-border);
+    letter-spacing: 1px;
+  }
+
+  /* ===== PDF BTN ===== */
+  .pdf-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+  }
+
+  .pdf-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: 'Inter', 'Noto Sans SC', sans-serif;
+    color: #000;
+    background: linear-gradient(135deg, var(--aurora-green), var(--aurora-cyan));
+    box-shadow: 0 8px 30px rgba(0,230,138,0.3), 0 0 60px rgba(0,230,138,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .pdf-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,230,138,0.4), 0 0 80px rgba(0,230,138,0.15);
+  }
+
+  .pdf-btn svg { width: 18px; height: 18px; }
+
+  /* ===== PRINT ===== */
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    /* === Base === */
+    body { background-color: #060a14 !important; color: #f1f5f9 !important; font-size: 10.5pt; }
+    body::before { display: none !important; }
+
+    /* === Hero === */
+    .hero {
+      min-height: auto;
+      padding: 4rem 2rem;
+      background-color: #060a14 !important;
+      page-break-after: always;
+    }
+    .hero-bg { filter: brightness(0.4) saturate(1.2) !important; }
+    .hero-aurora-overlay { display: block !important; }
+    .hero-particles, .scroll-indicator { display: none !important; }
+    .hero h1 { color: #00e68a !important; -webkit-text-fill-color: #00e68a !important; background: none !important; }
+    .hero-en { color: rgba(255,255,255,0.6) !important; }
+    .hero-subtitle { color: rgba(255,255,255,0.7) !important; }
+    .hero-tag { color: #00e68a !important; border-color: rgba(0,230,138,0.3) !important; background-color: rgba(0,230,138,0.12) !important; }
+    .hero-stat-value { color: #fff !important; text-shadow: none !important; }
+    .hero-stat-label { color: rgba(255,255,255,0.45) !important; }
+
+    /* === Sections === */
+    .route-section, .days-section, .budget-section, .booking-section, .eval-section, .tips-section {
+      background-color: #060a14 !important;
+    }
+    .section-label { color: #00e68a !important; }
+    .section-title { color: #f1f5f9 !important; }
+    .section-desc { color: #64748b !important; }
+
+    /* === Route Visual === */
+    .route-visual {
+      background-color: rgba(255,255,255,0.02) !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      backdrop-filter: none !important;
+      page-break-inside: avoid;
+    }
+    .route-visual::before { display: none !important; }
+    .route-node-emoji { display: block !important; }
+    .route-node-city { color: #f1f5f9 !important; }
+    .route-node-days { color: #64748b !important; }
+    .route-node-tag { color: #00e68a !important; background-color: rgba(0,230,138,0.1) !important; }
+    .route-connector .dot { background-color: rgba(0,230,138,0.4) !important; }
+    .route-connector .line { background-color: rgba(0,230,138,0.3) !important; }
+    .route-connector .arrow { color: #00e68a !important; }
+
+    /* === Image Banners === */
+    .img-banner {
+      page-break-inside: avoid;
+      height: 300px !important;
+      min-height: 250px !important;
+    }
+    .img-banner img { display: block !important; }
+    .img-banner-overlay { display: flex !important; }
+    .img-banner-label { color: #00e68a !important; }
+    .img-banner-title { color: #f1f5f9 !important; }
+
+    /* === Day Cards === */
+    .day-card {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      backdrop-filter: none !important;
+      page-break-inside: avoid;
+      margin-bottom: 1.5rem;
+      box-shadow: none !important;
+    }
+    .day-card:hover { transform: none !important; box-shadow: none !important; }
+    .day-card .day-image { display: block !important; height: 180px !important; }
+    .day-card .day-image-overlay { display: block !important; height: 180px !important; }
+
+    .day-title-block h2 { color: #f1f5f9 !important; }
+    .day-date { color: #64748b !important; }
+    .day-loc { color: #94a3b8 !important; background-color: rgba(255,255,255,0.05) !important; }
+
+    .day-num.c-green { background-color: rgba(0,230,138,0.15) !important; color: #00e68a !important; border-color: rgba(0,230,138,0.2) !important; }
+    .day-num.c-blue { background-color: rgba(0,119,255,0.15) !important; color: #60a5fa !important; border-color: rgba(0,119,255,0.2) !important; }
+    .day-num.c-purple { background-color: rgba(123,47,247,0.15) !important; color: #c4b5fd !important; border-color: rgba(123,47,247,0.2) !important; }
+    .day-num.c-amber { background-color: rgba(245,158,11,0.15) !important; color: #fbbf24 !important; border-color: rgba(245,158,11,0.2) !important; }
+    .day-num.c-teal { background-color: rgba(34,211,238,0.15) !important; color: #22d3ee !important; border-color: rgba(34,211,238,0.2) !important; }
+    .day-num.c-pink { background-color: rgba(255,110,199,0.15) !important; color: #f9a8d4 !important; border-color: rgba(255,110,199,0.2) !important; }
+    .day-num.c-orange { background-color: rgba(251,146,60,0.15) !important; color: #fdba74 !important; border-color: rgba(251,146,60,0.2) !important; }
+    .day-num.c-gray { background-color: rgba(148,163,184,0.1) !important; color: #cbd5e1 !important; border-color: rgba(148,163,184,0.15) !important; }
+
+    /* === Schedule === */
+    .sched-label { color: #00e68a !important; }
+    .sched-label::after { background: linear-gradient(90deg, rgba(0,230,138,0.2), transparent) !important; }
+    .sched-time { color: #00e68a !important; }
+    .sched-dot { background-color: #00e68a !important; box-shadow: none !important; }
+    .sched-dot.dim { background-color: #64748b !important; }
+    .sched-main { color: #f1f5f9 !important; }
+    .sched-sub { color: #64748b !important; }
+
+    .tag-core { background-color: rgba(239,68,68,0.15) !important; color: #f87171 !important; }
+    .tag-opt { background-color: rgba(245,158,11,0.12) !important; color: #fbbf24 !important; }
+    .tag-rec { background-color: rgba(0,230,138,0.12) !important; color: #00e68a !important; }
+
+    /* === Costs === */
+    .costs { border-color: rgba(255,255,255,0.04) !important; }
+    .cost-chip { background-color: rgba(245,158,11,0.06) !important; border-color: rgba(245,158,11,0.12) !important; }
+    .cost-chip .c-label { color: #64748b !important; }
+    .cost-chip .c-val { color: #f59e0b !important; }
+    .transport-note { color: #64748b !important; }
+
+    /* === Budget === */
+    .b-card {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      backdrop-filter: none !important;
+      page-break-inside: avoid;
+    }
+    .b-card::before { height: 3px !important; }
+    .b-card h3 { color: #f1f5f9 !important; }
+    .b-line .b-l { color: #94a3b8 !important; }
+    .b-line .b-v { color: #f1f5f9 !important; }
+    .b-line .b-v.opt { color: #64748b !important; }
+    .b-sub .b-v { color: #00e68a !important; }
+
+    .total-card {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(0,230,138,0.15) !important;
+      page-break-inside: avoid;
+    }
+    .total-card::before { display: none !important; }
+    .total-value { color: #00e68a !important; -webkit-text-fill-color: #00e68a !important; background: none !important; }
+    .total-label { color: #64748b !important; }
+    .total-note { color: #64748b !important; }
+
+    /* === Booking Tables === */
+    .book-phase-title { color: #f1f5f9 !important; }
+    .book-table {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      backdrop-filter: none !important;
+      page-break-inside: avoid;
+    }
+    .book-table th { background-color: rgba(255,255,255,0.02) !important; color: #64748b !important; border-color: rgba(255,255,255,0.06) !important; }
+    .book-table td { color: #94a3b8 !important; border-color: rgba(255,255,255,0.02) !important; }
+    .book-table .prov { color: #f1f5f9 !important; }
+    .book-table a { color: #22d3ee !important; }
+    .book-table .note { color: #64748b !important; }
+
+    /* === Evaluation === */
+    .eval-card {
+      background-color: #0f172a !important;
+      border: 1px solid rgba(255,255,255,0.06) !important;
+      backdrop-filter: none !important;
+      page-break-inside: avoid;
+    }
+    .eval-card h4 { color: #f1f5f9 !important; }
+    .eval-card li { color: #94a3b8 !important; }
+    .eval-card.eval-good li::before { background-color: #00e68a !important; box-shadow: none !important; }
+    .eval-card.eval-tip li::before { background-color: #f59e0b !important; box-shadow: none !important; }
+
+    /* === Footer & PDF btn === */
+    .pdf-float { display: none !important; }
+    .footer { color: #64748b !important; border-color: rgba(255,255,255,0.06) !important; background-color: #060a14 !important; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-stats { gap: 2rem; }
+    .route-visual { flex-direction: column; }
+    .route-connector { transform: rotate(90deg); padding: 4px 0; }
+    .day-header { flex-direction: column; gap: 0.8rem; }
+    .sched-time { width: 60px; font-size: 0.8rem; }
+    .book-table th, .book-table td { padding: 10px 12px; font-size: 0.8rem; }
+    .day-card.has-image .day-image { height: 160px; }
+    .day-card .day-image-overlay { height: 160px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-aurora-overlay"></div>
+  <div class="hero-particles"></div>
+  <div class="hero-content">
+    <span class="hero-tag">North 66.5° &middot; Arctic Circle</span>
+    <h1>芬兰极光之旅</h1>
+    <p class="hero-en">Finland Aurora Adventure 2026</p>
+    <p class="hero-subtitle">拉普兰 &middot; 玻璃穹顶 &middot; 北极光 &middot; 冰雪世界</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-value">9</div>
+        <div class="hero-stat-label">天</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">3</div>
+        <div class="hero-stat-label">城市</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">3–4</div>
+        <div class="hero-stat-label">极光机会</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-value">7</div>
+        <div class="hero-stat-label">核心活动</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>向下滚动</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== ROUTE ===== -->
+<section class="route-section">
+  <span class="section-label">路线总览</span>
+  <h2 class="section-title">行程脉络</h2>
+  <p class="section-desc">从赤道到北极圈，追寻 Aurora Borealis 的九天旅程</p>
+
+  <div class="route-visual">
+    <div class="route-node">
+      <span class="route-node-emoji">&#127968;</span>
+      <div class="route-node-city">新加坡</div>
+      <div class="route-node-days">出发</div>
+    </div>
+    <div class="route-connector"><span class="dot"></span><span class="line"></span><span class="arrow">&#10148;</span></div>
+    <div class="route-node">
+      <span class="route-node-emoji">&#9992;</span>
+      <div class="route-node-city">赫尔辛基</div>
+      <div class="route-node-days">中转</div>
+    </div>
+    <div class="route-connector"><span class="dot"></span><span class="line"></span><span class="arrow">&#10148;</span></div>
+    <div class="route-node">
+      <span class="route-node-emoji">&#127876;</span>
+      <div class="route-node-city">罗瓦涅米</div>
+      <div class="route-node-days">Day 1 – 4</div>
+      <div class="route-node-tag">活动核心</div>
+    </div>
+    <div class="route-connector"><span class="dot"></span><span class="line"></span><span class="arrow">&#10148;</span></div>
+    <div class="route-node">
+      <span class="route-node-emoji">&#10052;</span>
+      <div class="route-node-city">NLV · 萨里山</div>
+      <div class="route-node-days">Day 5 – 7</div>
+      <div class="route-node-tag">玻璃屋 2 晚</div>
+    </div>
+    <div class="route-connector"><span class="dot"></span><span class="line"></span><span class="arrow">&#10148;</span></div>
+    <div class="route-node">
+      <span class="route-node-emoji">&#127961;</span>
+      <div class="route-node-city">赫尔辛基</div>
+      <div class="route-node-days">Day 8</div>
+      <div class="route-node-tag">恢复日</div>
+    </div>
+    <div class="route-connector"><span class="dot"></span><span class="line"></span><span class="arrow">&#10148;</span></div>
+    <div class="route-node">
+      <span class="route-node-emoji">&#9992;</span>
+      <div class="route-node-city">回家</div>
+      <div class="route-node-days">Day 9</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHASE 1 BANNER ===== -->
+<div class="img-banner">
+  <img src="https://images.unsplash.com/photo-1483347756197-71ef80e95f73?w=1920&q=80&auto=format" alt="Aurora over Lapland" loading="lazy">
+  <div class="img-banner-overlay">
+    <div class="img-banner-label">Day 1 – 4 &middot; Rovaniemi</div>
+    <div class="img-banner-title">罗瓦涅米 — 拉普兰的心脏</div>
+  </div>
+</div>
+
+<!-- ===== DAY 1–4 ===== -->
+<section class="days-section">
+
+  <!-- DAY 1 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://images.unsplash.com/photo-1675703479350-297c33e8e2dd?w=1200&q=80&auto=format" alt="Northern Lights" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-green">1</div>
+        <div class="day-title-block">
+          <h2>抵达 + 极光追猎</h2>
+          <div class="day-meta">
+            <span class="day-date">1月3日 周六</span>
+            <span class="day-loc">&#128205; 罗瓦涅米</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">白天</div>
+        <div class="sched-row">
+          <span class="sched-time">05:45</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">抵达赫尔辛基 HEL</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">08:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">出关</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">11:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">HEL &#8594; RVN 内陆航班</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">13:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">抵达罗瓦涅米</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">14:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">入住 + 休息</div></div>
+        </div>
+        <div class="sched-label">夜晚</div>
+        <div class="sched-row">
+          <span class="sched-time">19:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">极光追猎小团 <span class="tag tag-core">核心</span></div>
+            <div class="sched-sub">Minivan Aurora Hunt · 小团出行 · 19:00–23:00 (4h)</div>
+          </div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">机票</span><span class="c-val">SGD 200–300</span></div>
+        <div class="cost-chip"><span class="c-label">追光</span><span class="c-val">SGD 180</span></div>
+      </div>
+      <div class="transport-note">&#128661; RVN 机场 → 酒店：Taxi · SGD 20</div>
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://images.unsplash.com/photo-1579005106920-4815e4662851?w=1200&q=80&auto=format" alt="Icebreaker Ship" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-blue">2</div>
+        <div class="day-title-block">
+          <h2>破冰船体验</h2>
+          <div class="day-meta">
+            <span class="day-date">1月4日 周日</span>
+            <span class="day-loc">&#128205; 罗瓦涅米</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">全天活动</div>
+        <div class="sched-row">
+          <span class="sched-time">08:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">出发（酒店接送）</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">13:30</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">Sampo 破冰船 <span class="tag tag-core">核心</span></div>
+            <div class="sched-sub">登上真正的破冰船 · 可穿防寒服漂浮在冰海中 · 13:30–17:30</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">19:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">返回酒店</div></div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">破冰船</span><span class="c-val">SGD 650–800</span></div>
+      </div>
+      <div class="transport-note">&#128652; 交通已包含，无需额外安排</div>
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://images.unsplash.com/photo-1484815843298-2c13cbc1b66f?w=1200&q=80&auto=format" alt="Winter Campfire" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-purple">3</div>
+        <div class="day-title-block">
+          <h2>轻松日 + 极光营地</h2>
+          <div class="day-meta">
+            <span class="day-date">1月5日 周一</span>
+            <span class="day-loc">&#128205; 罗瓦涅米</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">白天 — 自由探索</div>
+        <div class="sched-row">
+          <span class="sched-time">10:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">自然醒</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">11:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">圣诞老人村 / 咖啡时光</div>
+            <div class="sched-sub">北极圈地标 · 免费进入 · 拍照打卡</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">15:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">回酒店休息</div></div>
+        </div>
+        <div class="sched-label">夜晚</div>
+        <div class="sched-row">
+          <span class="sched-time">19:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">Aurora Camp 极光营地 <span class="tag tag-rec">强烈推荐</span></div>
+            <div class="sched-sub">Apukka Resort · 篝火 + 极光 · 19:00–22:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">极光营地</span><span class="c-val">SGD 120–180</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 4 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/24/43/45/caption.jpg?w=1200&h=-1&s=1" alt="Korouoma Frozen Waterfall Hike" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-amber">4</div>
+        <div class="day-title-block">
+          <h2>冰瀑徒步</h2>
+          <div class="day-meta">
+            <span class="day-date">1月6日 周二</span>
+            <span class="day-loc">&#128205; 罗瓦涅米</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">全天</div>
+        <div class="sched-row">
+          <span class="sched-time">08:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">出发</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">10:30</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">冰瀑徒步探险</div>
+            <div class="sched-sub">Beyond Arctic 专业摄影团 · 帮你拍冰瀑大片 · 10:30–15:00</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">17:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">返回酒店</div></div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">冰瀑</span><span class="c-val">SGD 250</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHASE 2 BANNER ===== -->
+<div class="img-banner">
+  <img src="https://images.unsplash.com/photo-1486946093500-76bb0e3ddef2?w=1920&q=80&auto=format" alt="Glass Igloo Northern Lights" loading="lazy">
+  <div class="img-banner-overlay">
+    <div class="img-banner-label">Day 5 – 7 &middot; NLV / Saariselkä</div>
+    <div class="img-banner-title">玻璃穹顶 — 躺着看极光</div>
+  </div>
+</div>
+
+<!-- ===== DAY 5–7 ===== -->
+<section class="days-section">
+
+  <!-- DAY 5 -->
+  <div class="day-card has-image">
+    <img class="day-image" style="object-position: center top;" src="https://r.profitroom.com/northernlightsvillagesaariselka/images/gallery/thumbs/1024x650/9df1552f-9f4d-4c80-8cee-954316db56f9.jpg" alt="Northern Lights Village Aurora Cabin" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-teal">5</div>
+        <div class="day-title-block">
+          <h2>转场 → 玻璃屋第 1 晚</h2>
+          <div class="day-meta">
+            <span class="day-date">1月7日 周三</span>
+            <span class="day-loc">&#128205; Saariselkä / NLV</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">白天 — 转场</div>
+        <div class="sched-row">
+          <span class="sched-time">10:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">自然醒</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">12:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">午餐</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">14:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">长途大巴 RVN → NLV</div>
+            <div class="sched-sub">Matkahuolto · 约 4 小时车程</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">18:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">抵达 · 入住玻璃屋</div></div>
+        </div>
+        <div class="sched-label">夜晚</div>
+        <div class="sched-row">
+          <span class="sched-time">21:00+</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">躺在床上看极光 <span class="tag tag-rec">推荐</span></div>
+            <div class="sched-sub">玻璃穹顶 · 不用出门 · 暖和舒适</div>
+          </div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">巴士</span><span class="c-val">SGD 40</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 6 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://images.unsplash.com/photo-1562509749-cad7febb5052?w=1200&q=80&auto=format" alt="Snowmobile Arctic" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-pink">6</div>
+        <div class="day-title-block">
+          <h2>冰钓 + 雪地摩托追极光</h2>
+          <div class="day-meta">
+            <span class="day-date">1月8日 周四</span>
+            <span class="day-loc">&#128205; NLV</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">白天</div>
+        <div class="sched-row">
+          <span class="sched-time">10:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">冰钓 (3h) <span class="tag tag-opt">可选</span></div>
+            <div class="sched-sub">可根据体力取消 · 10:00–13:00</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">13:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">休息（关键恢复时间）</div>
+            <div class="sched-sub">13:30–17:30 · 为晚上蓄力</div>
+          </div>
+        </div>
+        <div class="sched-label">夜晚</div>
+        <div class="sched-row">
+          <span class="sched-time">19:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">雪地摩托追极光 <span class="tag tag-core">核心</span></div>
+            <div class="sched-sub">3 小时夜间骑行 · 刺激 + 极光 · 19:00–22:00</div>
+          </div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">冰钓</span><span class="c-val">SGD 200 (可选)</span></div>
+        <div class="cost-chip"><span class="c-label">摩托</span><span class="c-val">SGD 300</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 7 -->
+  <div class="day-card has-image">
+    <img class="day-image" src="https://images.unsplash.com/photo-1647591413051-3662ec03bfe8?w=1200&q=80&auto=format" alt="Husky Sled Dogs" loading="lazy">
+    <div class="day-image-overlay"></div>
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-orange">7</div>
+        <div class="day-title-block">
+          <h2>哈士奇雪橇 + 飞赫尔辛基</h2>
+          <div class="day-meta">
+            <span class="day-date">1月9日 周五</span>
+            <span class="day-loc">&#128205; NLV → Helsinki</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">上午</div>
+        <div class="sched-row">
+          <span class="sched-time">09:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">哈士奇雪橇 10km <span class="tag tag-core">核心</span></div>
+            <div class="sched-sub">09:00–12:00 · 难忘的体验</div>
+          </div>
+        </div>
+        <div class="sched-label">转场</div>
+        <div class="sched-row">
+          <span class="sched-time">12:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">出发 → 伊瓦洛机场 (IVL)</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">13:15</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">IVL → HEL 航班</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">14:50</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">抵达赫尔辛基</div></div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">哈士奇</span><span class="c-val">SGD 340 (€229)</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHASE 3 BANNER ===== -->
+<div class="img-banner">
+  <img src="https://images.unsplash.com/photo-1547061103-fd8692d71326?w=1920&q=80&auto=format" alt="Helsinki Cathedral Winter" loading="lazy">
+  <div class="img-banner-overlay">
+    <div class="img-banner-label">Day 8 – 9 &middot; Helsinki</div>
+    <div class="img-banner-title">赫尔辛基 — 恢复与告别</div>
+  </div>
+</div>
+
+<!-- ===== DAY 8–9 ===== -->
+<section class="days-section">
+
+  <!-- DAY 8 -->
+  <div class="day-card">
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-gray">8</div>
+        <div class="day-title-block">
+          <h2>赫尔辛基恢复日</h2>
+          <div class="day-meta">
+            <span class="day-date">1月10日 周六</span>
+            <span class="day-loc">&#128205; Helsinki</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-label">全天</div>
+        <div class="sched-row">
+          <span class="sched-time">10:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">自然醒</div></div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">11:30</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">市区漫步</div>
+            <div class="sched-sub">参议院广场 · 老市集大厅 · 设计区</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">15:00</span>
+          <div class="sched-dot-col"><div class="sched-dot"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">芬兰桑拿 <span class="tag tag-rec">推荐</span></div>
+            <div class="sched-sub">Löyly Helsinki · 需提前 1–2 周预约</div>
+          </div>
+        </div>
+        <div class="sched-row">
+          <span class="sched-time">18:00</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text"><div class="sched-main">告别晚餐</div></div>
+        </div>
+      </div>
+      <div class="costs">
+        <div class="cost-chip"><span class="c-label">桑拿</span><span class="c-val">SGD 30–50</span></div>
+        <div class="cost-chip"><span class="c-label">餐饮</span><span class="c-val">SGD 80</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY 9 -->
+  <div class="day-card">
+    <div class="day-card-body">
+      <div class="day-header">
+        <div class="day-num c-gray">9</div>
+        <div class="day-title-block">
+          <h2>回家</h2>
+          <div class="day-meta">
+            <span class="day-date">1月11日 周日</span>
+            <span class="day-loc">&#128205; Helsinki → Home</span>
+          </div>
+        </div>
+      </div>
+      <div class="sched">
+        <div class="sched-row">
+          <span class="sched-time">00:05</span>
+          <div class="sched-dot-col"><div class="sched-dot dim"></div></div>
+          <div class="sched-text">
+            <div class="sched-main">红眼航班 · 飞回家</div>
+            <div class="sched-sub">一路平安 &#10024;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BUDGET ===== -->
+<section class="budget-section">
+  <span class="section-label">预算</span>
+  <h2 class="section-title">费用明细</h2>
+
+  <div class="budget-grid">
+    <div class="b-card b-stay">
+      <div class="b-card-icon">&#127968;</div>
+      <h3>住宿</h3>
+      <div class="b-line"><span class="b-l">NLV 玻璃屋 (2晚)</span><span class="b-v">SGD 1,930</span></div>
+      <div class="b-line"><span class="b-l">RVN 酒店 (4晚)</span><span class="b-v">SGD 800–1,000</span></div>
+      <div class="b-line"><span class="b-l">HEL 酒店 (1晚)</span><span class="b-v">SGD 180</span></div>
+      <div class="b-sub"><span class="b-l">小计</span><span class="b-v">SGD 2,900–3,100</span></div>
+    </div>
+
+    <div class="b-card b-act">
+      <div class="b-card-icon">&#127967;</div>
+      <h3>活动</h3>
+      <div class="b-line"><span class="b-l">极光追猎 (D1)</span><span class="b-v">SGD 180</span></div>
+      <div class="b-line"><span class="b-l">破冰船 (D2)</span><span class="b-v">SGD 700</span></div>
+      <div class="b-line"><span class="b-l">极光营地 (D3)</span><span class="b-v">SGD 150</span></div>
+      <div class="b-line"><span class="b-l">冰瀑徒步 (D4)</span><span class="b-v">SGD 250</span></div>
+      <div class="b-line"><span class="b-l">冰钓 (D6)</span><span class="b-v opt">SGD 200 (可选)</span></div>
+      <div class="b-line"><span class="b-l">雪地摩托 (D6)</span><span class="b-v">SGD 300</span></div>
+      <div class="b-line"><span class="b-l">哈士奇 (D7)</span><span class="b-v">SGD 340</span></div>
+      <div class="b-sub"><span class="b-l">小计</span><span class="b-v">SGD 1,700–2,100</span></div>
+    </div>
+
+    <div class="b-card b-trans">
+      <div class="b-card-icon">&#9992;</div>
+      <h3>交通</h3>
+      <div class="b-line"><span class="b-l">国际机票</span><span class="b-v">SGD 1,500</span></div>
+      <div class="b-line"><span class="b-l">内陆航班</span><span class="b-v">SGD 400</span></div>
+      <div class="b-line"><span class="b-l">巴士 / 接送</span><span class="b-v">SGD 150</span></div>
+      <div class="b-sub"><span class="b-l">小计</span><span class="b-v">SGD 2,000</span></div>
+    </div>
+
+    <div class="b-card b-food">
+      <div class="b-card-icon">&#127860;</div>
+      <h3>餐饮</h3>
+      <div class="b-line"><span class="b-l">8 天 × SGD 90 / 天</span><span class="b-v">SGD 720</span></div>
+      <div class="b-sub"><span class="b-l">小计</span><span class="b-v">SGD 720</span></div>
+    </div>
+  </div>
+
+  <div class="total-card">
+    <div class="total-label">预估总费用</div>
+    <div class="total-value">SGD 7,300 – 8,000</div>
+    <div class="total-note">含所有可选活动 · 每人</div>
+  </div>
+</section>
+
+<!-- ===== BOOKING ===== -->
+<section class="booking-section">
+  <span class="section-label">预订</span>
+  <h2 class="section-title">一键下单指南</h2>
+
+  <div class="book-phase">
+    <div class="book-phase-head">
+      <span class="book-phase-icon">&#127876;</span>
+      <span class="book-phase-title">罗瓦涅米 (Day 1–4)</span>
+    </div>
+    <table class="book-table">
+      <thead><tr><th>活动</th><th>服务商</th><th>预订平台</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>D1 极光追猎</td>
+          <td class="prov">Wild About Lapland</td>
+          <td><a href="https://wildaboutlapland.com" target="_blank">wildaboutlapland.com</a></td>
+          <td class="note">选 "Aurora Hunt - Small Group"</td>
+        </tr>
+        <tr>
+          <td>D2 破冰船</td>
+          <td class="prov">Sampo Icebreaker</td>
+          <td><a href="https://experience365.fi" target="_blank">experience365.fi</a></td>
+          <td class="note">唯一官方 · 必须含 RVN 接送</td>
+        </tr>
+        <tr>
+          <td>D3 极光营地</td>
+          <td class="prov">Apukka Resort</td>
+          <td><a href="https://apukkaresort.fi" target="_blank">apukkaresort.fi</a></td>
+          <td class="note">"Aurora Camp by Snowtrain"</td>
+        </tr>
+        <tr>
+          <td>D4 冰瀑徒步</td>
+          <td class="prov">Beyond Arctic</td>
+          <td><a href="https://beyondarctic.com" target="_blank">beyondarctic.com</a></td>
+          <td class="note">8人精品团 · 含专业摄影</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="book-phase">
+    <div class="book-phase-head">
+      <span class="book-phase-icon">&#128652;</span>
+      <span class="book-phase-title">跨城交通 (Day 5 & 7)</span>
+    </div>
+    <table class="book-table">
+      <thead><tr><th>路线</th><th>服务商</th><th>预订平台</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>RVN → NLV 巴士</td>
+          <td class="prov">Matkahuolto</td>
+          <td><a href="https://matkahuolto.fi" target="_blank">matkahuolto.fi</a></td>
+          <td class="note">早订有 SGD 15 特价</td>
+        </tr>
+        <tr>
+          <td>IVL → HEL 航班</td>
+          <td class="prov">Finnair</td>
+          <td><a href="https://finnair.com" target="_blank">finnair.com</a></td>
+          <td class="note">选含行李额的票种</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="book-phase">
+    <div class="book-phase-head">
+      <span class="book-phase-icon">&#10052;</span>
+      <span class="book-phase-title">NLV / 萨里山 (Day 6–7)</span>
+    </div>
+    <table class="book-table">
+      <thead><tr><th>活动</th><th>服务商</th><th>预订方式</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>D6 冰钓</td>
+          <td class="prov">NLV 活动中心</td>
+          <td>前台 / 官网</td>
+          <td class="note">3h "Ice Fishing by Snowmobile"</td>
+        </tr>
+        <tr>
+          <td>D6 雪地摩托</td>
+          <td class="prov">NLV 活动中心</td>
+          <td>前台 / 官网</td>
+          <td class="note">3h "Aurora Expedition by Snowmobile"</td>
+        </tr>
+        <tr>
+          <td>D7 哈士奇雪橇</td>
+          <td class="prov">NLV 活动中心</td>
+          <td>前台 / 官网</td>
+          <td class="note">10km "Husky Safari"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="book-phase">
+    <div class="book-phase-head">
+      <span class="book-phase-icon">&#127961;</span>
+      <span class="book-phase-title">赫尔辛基 (Day 8)</span>
+    </div>
+    <table class="book-table">
+      <thead><tr><th>活动</th><th>服务商</th><th>预订平台</th><th>备注</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>现代桑拿</td>
+          <td class="prov">Löyly Helsinki</td>
+          <td><a href="https://loylyhelsinki.fi" target="_blank">loylyhelsinki.fi</a></td>
+          <td class="note">提前 1-2 周官网预约</td>
+        </tr>
+        <tr>
+          <td>传统桑拿</td>
+          <td class="prov">Kaurilan Sauna</td>
+          <td>可直接去</td>
+          <td class="note">最地道的芬兰体验</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== EVALUATION ===== -->
+<section class="eval-section">
+  <span class="section-label">评价</span>
+  <h2 class="section-title">行程评价</h2>
+
+  <div class="eval-grid">
+    <div class="eval-card eval-good">
+      <h4>&#9989; 优势</h4>
+      <ul>
+        <li>极光成功率高 — 3–4 次独立机会</li>
+        <li>行程不赶，节奏舒适</li>
+        <li>体力分布合理，张弛有度</li>
+        <li>玻璃屋没有浪费，安排了极光观测</li>
+      </ul>
+    </div>
+    <div class="eval-card eval-tip">
+      <h4>&#128161; 优化建议</h4>
+      <ul>
+        <li><strong>冰钓 (D6)</strong> — 可删除以节省体力</li>
+        <li><strong>Aurora Camp (D3)</strong> — 强烈建议保留</li>
+        <li><strong>破冰船</strong> — 最贵最难订，尽快下单</li>
+        <li><strong>大巴票</strong> — 提前订可享 SGD 15 特价</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  2026 芬兰极光之旅 &middot; 行程规划手册
+</footer>
+
+<!-- ===== PDF BUTTON ===== -->
+<div class="pdf-float">
+  <button class="pdf-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    下载 PDF
+  </button>
+</div>
+
+</body>
+</html>
